@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://1yhu67x454vg"]
+
+[ext_resource type="Script" uid="uid://fsfrimcmkcdy" path="res://GdScript_Files/mob.gd" id="1_r6b5h"]
+[ext_resource type="Texture2D" uid="uid://b7qjff3gjh2b4" path="res://Sprites/New Piskel (12) (2) (3).png" id="2_r6b5h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6b5h"]
+radius = 16.6667
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6frnq"]
+atlas = ExtResource("2_r6b5h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gguu4"]
+atlas = ExtResource("2_r6b5h")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpg5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6frnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gguu4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6frnq"]
+radius = 23.4473
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gguu4"]
+radius = 763.228
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
+top_level = true
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_r6b5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.66667)
+shape = SubResource("CircleShape2D_r6b5h")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_wpg5f")
+autoplay = "default"
+frame = 1
+frame_progress = 0.714903
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_6frnq")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(0, 4.33333)
+shape = SubResource("CircleShape2D_gguu4")
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

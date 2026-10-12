@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://svjjb884v4vo"]
+
+[ext_resource type="Script" uid="uid://chh5vs4b2dghm" path="res://GdScript_Files/startfight.gd" id="1_1ugwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idev5"]
+size = Vector2(40, 40)
+
+[node name="Fightstarter" type="Area2D"]
+scale = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_1ugwl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.631492, 0.95914, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_idev5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

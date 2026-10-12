@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bmmh1glwmqaay"]
+
+[ext_resource type="Script" uid="uid://ywlo273l7s5s" path="res://GdScript_Files/bullet_1.gd" id="1_7f4k7"]
+[ext_resource type="Texture2D" uid="uid://cc37rs4l4fsle" path="res://Sprites/New Piskel (12) (2) (5).png" id="2_7f4k7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7f4k7"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7cwy"]
+atlas = ExtResource("2_7f4k7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtecg"]
+atlas = ExtResource("2_7f4k7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48bpi"]
+atlas = ExtResource("2_7f4k7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ceir"]
+atlas = ExtResource("2_7f4k7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_738v8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7cwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtecg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48bpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ceir")
+}],
+"loop": true,
+"name": &"Throw",
+"speed": 8.0
+}]
+
+[node name="Area2D" type="Area2D"]
+top_level = true
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_7f4k7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7f4k7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_738v8")
+animation = &"Throw"
+autoplay = "Throw"
+frame = 1
+frame_progress = 0.602282
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

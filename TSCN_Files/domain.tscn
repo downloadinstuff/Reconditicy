@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dl0lpfmluqs5"]
+
+[ext_resource type="Script" uid="uid://cuurrsllmli2i" path="res://GdScript_Files/domain.gd" id="1_bimvi"]
+[ext_resource type="PackedScene" uid="uid://bqk3ppjytmt8u" path="res://TSCN_Files/Player.tscn" id="1_sa5cp"]
+[ext_resource type="Texture2D" uid="uid://bwadmswgk1bv2" path="res://Sprites/icon.svg" id="3_7802p"]
+[ext_resource type="Script" uid="uid://ccexy0ti673ph" path="res://GdScript_Files/attack_editor.gd" id="4_im5l4"]
+
+[node name="Domain" type="Node2D" unique_id=287775337]
+script = ExtResource("1_bimvi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1853522163]
+
+[node name="CharacterBody2D" parent="." unique_id=1506397362 instance=ExtResource("1_sa5cp")]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1191376906]
+position = Vector2(-272, 72)
+texture = ExtResource("3_7802p")
+
+[node name="Icon2" type="Sprite2D" parent="." unique_id=1131898707]
+position = Vector2(488, -16)
+texture = ExtResource("3_7802p")
+
+[node name="AttackEditor" type="Node2D" parent="." unique_id=285528367]
+script = ExtResource("4_im5l4")
+Boss_Attack_Highlight_1 = Array[Vector2i]([Vector2i(-2, 0), Vector2i(-2, 1), Vector2i(-2, -1), Vector2i(-2, -2), Vector2i(1, 0)])

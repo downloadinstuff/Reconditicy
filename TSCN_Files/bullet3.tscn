@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://1jenqmmgjg6g"]
+
+[ext_resource type="Script" uid="uid://cyahptd0yhks8" path="res://GdScript_Files/bullet_3.gd" id="1_ow7ix"]
+[ext_resource type="Texture2D" uid="uid://1oy332bi48ry" path="res://Sprites/New Piskel (12) (2) (8).png" id="2_ow7ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2vg0"]
+size = Vector2(14.0114, 19.992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s78no"]
+atlas = ExtResource("2_ow7ix")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgh4k"]
+atlas = ExtResource("2_ow7ix")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ut84"]
+atlas = ExtResource("2_ow7ix")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl3xs"]
+atlas = ExtResource("2_ow7ix")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txf2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s78no")
+}],
+"loop": true,
+"name": &"club",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgh4k")
+}],
+"loop": true,
+"name": &"diamond",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ut84")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl3xs")
+}],
+"loop": true,
+"name": &"spade",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="CharacterBody2D"]
+top_level = true
+rotation = 0.000572055
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_ow7ix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.53265e-07, -7.15801e-07)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w2vg0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_txf2o")
+animation = &"spade"

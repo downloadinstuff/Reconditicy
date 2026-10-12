@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bej7sev18nbbw"]
+
+[ext_resource type="Script" uid="uid://j2xbteiyre1j" path="res://GdScript_Files/Bullet4Effects.gd" id="1_qrgx8"]
+
+[node name="Panel" type="Panel"]
+offset_right = 34.0
+offset_bottom = 26.0
+scale = Vector2(2, 2)
+script = ExtResource("1_qrgx8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_right = 34.0
+offset_bottom = 23.0
+text = "+1"

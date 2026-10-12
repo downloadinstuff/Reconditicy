@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cck7j7g4c0qtx"]
+
+[ext_resource type="Script" uid="uid://btbgakiekfkjl" path="res://GdScript_Files/bullet_5.gd" id="1_nejvr"]
+[ext_resource type="Texture2D" uid="uid://bkha8hydepyer" path="res://Sprites/New Piskel (12) (2) (9).png" id="2_nejvr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nn10"]
+radius = 6.0
+height = 22.0
+
+[node name="Area2D" type="Area2D"]
+top_level = true
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_nejvr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_7nn10")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_nejvr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
